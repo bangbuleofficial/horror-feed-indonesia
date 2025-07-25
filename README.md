@@ -1,283 +1,250 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Horror Feed Indonesia</title>
-    <meta name="description" content="Cerita horor Indonesia dari TikTok, YouTube, dan Instagram. Plus AI gambar horor!">
-    <meta name="keywords" content="horor, Indonesia, cerita, AI, TikTok, YouTube, Instagram, horror image generator">
-    <meta name="author" content="Horror Feed ID">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" />
-    <style>
-        html, body {
-            margin: 0;
-            font-family: 'Inter', sans-serif;
-            background-color: #0a0a0a;
-            color: white;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HORROR FEED INDONESIA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: #111;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-            z-index: 1000;
-        }
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background-color: #111;
+      color: white;
+    }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: red;
-        }
+    header {
+      background-color: #000;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 3px solid red;
+    }
 
-        .nav-links a {
-            color: #ccc;
-            text-decoration: none;
-            margin-left: 1rem;
-            font-weight: 500;
-        }
+    header h1 {
+      color: red;
+      font-weight: 800;
+      margin: 0;
+    }
 
-        .nav-links a:hover,
-        .nav-link.active {
-            color: white;
-        }
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: white;
+      background-color: #4a0c0c;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-weight: 600;
+    }
 
-        .hero {
-            height: 100vh;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.9)),
-                url('https://images.unsplash.com/photo-1520637836862-4d197d17c87a?w=1920&fit=crop') center/cover no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding-top: 70px;
-            text-align: center;
-        }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 30px 20px;
+    }
 
-        .hero h1 {
-            font-size: 3rem;
-            background: linear-gradient(90deg, white, red);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+    h2 {
+      font-size: 24px;
+      border-left: 5px solid red;
+      padding-left: 10px;
+      margin-bottom: 20px;
+    }
 
-        .hero p {
-            font-size: 1.2rem;
-            color: #ccc;
-            margin: 1rem 0;
-        }
+    .cards {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
 
-        .btn {
-            padding: 0.8rem 1.5rem;
-            margin: 0.5rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 600;
-        }
+    .card {
+      background: linear-gradient(145deg, #1c1c1c, #0f0f0f);
+      padding: 20px;
+      border-radius: 12px;
+      flex: 1;
+      min-width: 280px;
+      position: relative;
+    }
 
-        .btn-primary {
-            background-color: white;
-            color: black;
-        }
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
 
-        .btn-secondary {
-            background-color: transparent;
-            color: white;
-            border: 1px solid white;
-        }
+    .card h3 {
+      margin: 0 0 10px;
+    }
 
-        section.content {
-            padding: 4rem 2rem;
-        }
+    .badge {
+      background-color: red;
+      color: white;
+      padding: 4px 10px;
+      border-radius: 10px;
+      font-size: 12px;
+      margin-right: 10px;
+    }
 
-        .section-title {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
+    .timestamp {
+      font-size: 12px;
+      color: #ccc;
+    }
 
-        .carousel {
-            display: flex;
-            gap: 1rem;
-            overflow-x: auto;
-        }
+    .filters {
+      margin-top: 40px;
+    }
 
-        .horror-card {
-            min-width: 300px;
-            background: #1a1a1a;
-            border: 1px solid #333;
-            border-radius: 10px;
-            overflow: hidden;
-        }
+    .filters h3 {
+      margin-bottom: 10px;
+    }
 
-        .horror-card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
+    .filters .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
 
-        .horror-card .card-content {
-            padding: 1rem;
-        }
+    .filters button {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 20px;
+      font-weight: 600;
+      cursor: pointer;
+      background-color: #2c2c2c;
+      color: white;
+    }
 
-        .generator-section {
-            margin-top: 3rem;
-            background-color: #111;
-            padding: 2rem;
-            border-radius: 10px;
-        }
+    .filters button.active {
+      background-color: red;
+    }
 
-        .form-textarea {
-            width: 100%;
-            height: 100px;
-            padding: 1rem;
-            background: #222;
-            color: white;
-            border: 1px solid #444;
-            border-radius: 5px;
-            resize: vertical;
-        }
+    .generate-button {
+      background-color: red;
+      padding: 15px;
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      margin: 30px 0;
+      width: 100%;
+      cursor: pointer;
+    }
 
-        .generate-btn {
-            margin-top: 1rem;
-            width: 100%;
-            padding: 1rem;
-            background: red;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 1rem;
-            cursor: pointer;
-        }
+    .downloads {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
 
-        .images-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            margin-top: 2rem;
-        }
+    .download-card {
+      background-color: #1c1c1c;
+      padding: 10px;
+      border-radius: 10px;
+      text-align: center;
+      flex: 1;
+      min-width: 200px;
+    }
 
-        .image-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
+    .download-card img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
 
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: #666;
-            background: #000;
-        }
-    </style>
+    .download-card a {
+      background-color: limegreen;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      .cards,
+      .downloads {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <nav class="navbar">
-        <div class="logo">HORROR FEED</div>
-        <div class="nav-links">
-            <a href="#">Beranda</a>
-            <a href="#">TikTok</a>
-            <a href="#">YouTube</a>
-            <a href="#">Instagram</a>
-        </div>
+  <header>
+    <h1>HORROR FEED</h1>
+    <nav>
+      <a href="#">Beranda</a>
+      <a href="#">TikTok</a>
     </nav>
+  </header>
 
-    <section class="hero">
-        <div>
-            <h1>Cerita Horor Indonesia</h1>
-            <p>Penampakan, pocong, santet dan kisah nyata dari seluruh Nusantara.</p>
-            <button class="btn btn-primary" onclick="scrollToContent()">▶ Mulai</button>
-            <button class="btn btn-secondary">ℹ Info</button>
-        </div>
-    </section>
+  <div class="container">
+    <h2>🔥 Trending Hari Ini</h2>
+    <div class="cards">
+      <div class="card">
+        <img src="https://via.placeholder.com/300x180" alt="Horror Image">
+        <h3>Penampakan Misterius di Kos Jakarta</h3>
+        <p>Mahasiswa mengalami kejadian aneh di kos. Suara langkah kaki malam hari dan pintu terbuka sendiri.</p>
+        <span class="badge">TIKTOK</span><span class="timestamp">5 menit lalu</span>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/300x180" alt="Horror Image">
+        <h3>Ritual Santet di Desa Terpencil</h3>
+        <p>Dokumenter tentang praktik santet di Jawa Tengah dengan kesaksian korban.</p>
+        <span class="badge">YOUTUBE</span><span class="timestamp">12 menit lalu</span>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/300x180" alt="Horror Image">
+        <h3>Foto Pocong di Kuburan Tengah Kota</h3>
+        <p>Foto ziarah kubur menunjukkan sosok putih mencurigakan di belakang makam.</p>
+        <span class="badge">INSTAGRAM</span><span class="timestamp">18 menit lalu</span>
+      </div>
+    </div>
 
-    <section class="content" id="content">
-        <h2 class="section-title">🔥 Trending Hari Ini</h2>
-        <div class="carousel" id="carousel-container"></div>
+    <div class="filters">
+      <h3>Gaya Horror:</h3>
+      <div class="buttons">
+        <button class="active">Realistis</button>
+        <button>Gothic</button>
+        <button>Dark</button>
+        <button>Vintage</button>
+      </div>
 
-        <div class="generator-section">
-            <h2 class="section-title">🎨 Generator Gambar AI</h2>
-            <textarea class="form-textarea" id="imagePrompt" placeholder="Contoh: pocong berdiri di tengah kuburan berkabut..."></textarea>
-            <button class="generate-btn" onclick="generateImages()">🎨 Buat Gambar</button>
-            <div class="images-grid" id="imagesGrid"></div>
-        </div>
-    </section>
+      <h3 style="margin-top: 20px;">Tema Horror Indonesia:</h3>
+      <div class="buttons">
+        <button>Pocong</button>
+        <button>Kuntilanak</button>
+        <button>Tuyul</button>
+        <button>Santet</button>
+      </div>
+    </div>
 
-    <footer>
-        &copy; 2025 Horror Feed Indonesia
-    </footer>
+    <button class="generate-button">🎨 Generate Gambar Horror</button>
 
-    <script>
-        const horrorContent = [
-            {
-                title: "Penampakan di kosan",
-                description: "Mahasiswa melihat bayangan misterius lewat kaca.",
-                image: "https://images.unsplash.com/photo-1544207240-66d3e1c39d68?w=300&h=180&fit=crop"
-            },
-            {
-                title: "Ritual Santet di desa",
-                description: "Video menampilkan ritual kuno dan suara-suara aneh.",
-                image: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=300&h=180&fit=crop"
-            },
-            {
-                title: "Sosok putih di pemakaman",
-                description: "Foto viral menunjukkan penampakan tak dikenal.",
-                image: "https://images.unsplash.com/photo-1509909756405-be0199881695?w=300&h=180&fit=crop"
-            }
-        ];
-
-        const horrorImages = [
-            "https://images.unsplash.com/photo-1520637836862-4d197d17c87a?w=400&h=400&fit=crop",
-            "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=400&fit=crop",
-            "https://images.unsplash.com/photo-1509909756405-be0199881695?w=400&h=400&fit=crop"
-        ];
-
-        function scrollToContent() {
-            document.getElementById("content").scrollIntoView({ behavior: "smooth" });
-        }
-
-        function generateImages() {
-            const prompt = document.getElementById("imagePrompt").value;
-            const grid = document.getElementById("imagesGrid");
-            if (!prompt) {
-                alert("Isi deskripsi dulu, dong!");
-                return;
-            }
-
-            grid.innerHTML = "";
-            for (let i = 0; i < 3; i++) {
-                const imgURL = horrorImages[Math.floor(Math.random() * horrorImages.length)];
-                const div = document.createElement("div");
-                div.className = "image-item";
-                div.innerHTML = `<img src="${imgURL}" alt="Generated Horror Image">`;
-                grid.appendChild(div);
-            }
-        }
-
-        function loadCarousel() {
-            const container = document.getElementById("carousel-container");
-            horrorContent.forEach(item => {
-                const card = document.createElement("div");
-                card.className = "horror-card";
-                card.innerHTML = `
-                    <img src="${item.image}" alt="${item.title}">
-                    <div class="card-content">
-                        <h3>${item.title}</h3>
-                        <p>${item.description}</p>
-                    </div>
-                `;
-                container.appendChild(card);
-            });
-        }
-
-        document.addEventListener("DOMContentLoaded", loadCarousel);
-    </script>
+    <div class="downloads">
+      <div class="download-card">
+        <img src="https://via.placeholder.com/200x120" alt="Generated">
+        <a href="#">📥 Download</a>
+      </div>
+      <div class="download-card">
+        <img src="https://via.placeholder.com/200x120" alt="Generated">
+        <a href="#">📥 Download</a>
+      </div>
+      <div class="download-card">
+        <img src="https://via.placeholder.com/200x120" alt="Generated">
+        <a href="#">📥 Download</a>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
