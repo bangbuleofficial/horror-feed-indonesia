@@ -94,6 +94,8 @@
             margin-bottom: 32px;
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.05);
+            display: block !important;
+            visibility: visible !important;
         }
 
         .stats span {
@@ -627,6 +629,13 @@
 
         // Initialize everything when page loads
         document.addEventListener('DOMContentLoaded', function() {
+            // Make sure stats are visible first
+            const statsElement = document.querySelector('.stats');
+            if (statsElement) {
+                statsElement.style.display = 'block';
+                statsElement.style.visibility = 'visible';
+            }
+            
             renderPosts(currentPosts);
             updateLastUpdateTime();
             startUpdateTimer();
