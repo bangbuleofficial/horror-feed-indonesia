@@ -383,7 +383,7 @@
 
     <div class="container">
         <div class="stats glass-effect">
-            <span>📊 Total Posts: <strong id="total-posts">0</strong></span>
+            <span>📊 Total Posts: <strong id="total-posts">6</strong></span>
             <span>⏰ Update Terakhir: <span class="last-update" id="last-update">Memuat...</span></span>
             <span>🔄 Next Update: <strong id="next-update">2:00</strong></span>
         </div>
